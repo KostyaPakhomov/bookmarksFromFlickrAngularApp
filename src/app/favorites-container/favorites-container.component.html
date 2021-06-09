@@ -1,0 +1,14 @@
+<div class="wrapper_bookm_cont">
+  <ng-template #noImage>
+    <div class="noImages">No images</div>
+  </ng-template>
+  <div class="images" *ngIf="favorites.length > 0; else noImage">
+    <ng-container class="ng_container" *ngFor="let image of favorites; let i = index" >
+      <app-favorites
+          [image] = image
+          (removeBookmark) = "removeBookmark($event,image)"
+        >
+      </app-favorites>
+    </ng-container>
+  </div>
+</div>

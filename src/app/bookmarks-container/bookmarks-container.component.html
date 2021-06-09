@@ -1,0 +1,30 @@
+<div class="wrapper_bookm_cont">
+  <div class="form-group">
+    <form (submit)="search($event, input.value)" data-testid="form">
+      <p>
+        <input type="text"  #input data-testid="search-term-input" placeholder="Enter to search" />
+        <button data-testid="submit-search">Search</button>
+      </p>
+    </form>
+    <ng-template #noImage><div class="noImages">No images</div></ng-template>
+  </div>
+
+  <div class="images" *ngIf="images.length>0; else noImage">
+
+    <div class="pages"  [style.display]="images.length>0 ? 'flex' : 'none'">
+      <button class="prev" (click)="previous()">Prev</button>
+      <span class="currPage">{{ currentPage }}</span>
+      <button class="next" (click)="next()">Next</button>
+    </div>
+
+    <ng-container class="ng_container" *ngFor="let image of images; let i = index" >
+        <div class="div" [style.display]="(i>=l1 && i<l2) ? 'inline-block' : 'none'">
+          <app-bookmark
+            [image] = image
+            (bookmark) = "bookmark($event,image)"
+          >
+          </app-bookmark>
+        </div>
+    </ng-container>
+  </div>
+</div>

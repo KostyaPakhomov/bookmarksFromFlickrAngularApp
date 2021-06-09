@@ -1,0 +1,8 @@
+<div class="wrapper_bookm" >
+  <a href="{{image.url}}_b.jpg" target="_blank">
+    <img class="image" src="{{image.url}}_m.jpg" alt="{{image.title}}" title="{{image.title}}">
+  </a>
+  <button class="addBookmark" (click)="addBookmark()" [disabled]="disabled" [style.backgroundColor]="disabled?'gray':'rgba(240,235,84,0.8)'">
+    {{buttonText}}
+  </button>
+</div>
